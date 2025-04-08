@@ -1,78 +1,78 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+void main(){
+  runApp(LoginApp());  
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  
+class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Site de Jurubeba',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 214, 2, 2)),
-      ),
-      home: const MyHomePage(title: '                                                             Contador profissional'),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
     );
-
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-    
-      _counter = _counter + 10;
-    });
-  }
-
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   
-    
     return Scaffold(
       appBar: AppBar(
-       
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        
-        title: Text(widget.title),
+        title: Text(
+          'Login',
+          style: TextStyle(color: const Color.fromARGB(255, 248, 170, 1)), // Cor do texto da AppBar
+        ),
+        centerTitle: true, // Centraliza o título
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0), // Define a cor da AppBar
+        elevation: 4, // Sombra abaixo da AppBar
       ),
-      body: Center(
-        
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+     
+    body: Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
-         
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Contador:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          children: [
+            
+          Image.asset(
+              'lib/assets/avatar.png',
+              width: 400,
+              height: 200,
+            ),
+
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Email',
+              prefixIcon: Icon(Icons.email),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0)
+                )
+              ),
+            ),
+            SizedBox(height: 16.0,),
+            TextFormField(
+              obscureText: true,
+              decoration: InputDecoration(labelText: 'Senha',
+               prefixIcon: Icon(Icons.password),
+               border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                ),
+               ),
+              
+              ),
+               SizedBox(height: 32.0),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color.fromARGB(255, 0, 0, 0),
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Login'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.donut_small_rounded),
-      ), 
     );
   }
+
 }
